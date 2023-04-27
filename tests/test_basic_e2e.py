@@ -9,3 +9,12 @@ class TestSuite(BaseClass):
 
     def test_currency(self):
         self.base_homepage().get_currency()
+
+    def test_destination(self):
+        self.base_homepage().get_destination("New York")
+
+    def test_dates(self):
+        self.base_homepage().get_dates()
+
+    def test_occupancy(self):
+        self.base_homepage().get_occupancy()

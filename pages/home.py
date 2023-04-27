@@ -1,8 +1,4 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 
 class HomePage(object):
 
@@ -17,8 +13,10 @@ class HomePage(object):
         self.driver.find_element(By.XPATH, "(//span[@class='cb5ebe3ffb'])[1]").click()
         self.driver.find_element(By.XPATH, "//div[normalize-space()='USD']").click()
 
-    def get_destination(self):
-        return self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='Where are you going?']")
+    def get_destination(self, destination):
+        self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='Where are you going?']").send_keys(destination)
+        destination = "//div[normalize-space()='" + destination + "']"
+        self.driver.find_element(By.XPATH, destination).click()
 
     def get_dates(self):
         pass
