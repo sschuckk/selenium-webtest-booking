@@ -1,12 +1,11 @@
 import pytest
-from pages.home import HomePage
+from utils.base import BaseClass
 
 
-@pytest.mark.usefixtures("setup")
-class TestSuite:
+class TestSuite(BaseClass):
 
-    def test_case1(self):
-        homepage = HomePage(self.driver)
-        homepage.get_language()
-        homepage.get_currency()
+    def test_language(self):
+        self.base_homepage().get_language()
 
+    def test_currency(self):
+        self.base_homepage().get_currency()

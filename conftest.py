@@ -11,6 +11,7 @@ def setup(request):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--incognito")
     service = Service(r"..selenium-webtest-booking\drivers")
+
     driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.implicitly_wait(5)
     driver.maximize_window()
