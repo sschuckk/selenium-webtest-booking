@@ -20,4 +20,8 @@ class TestSuite(BaseClass):
         self.base_homepage().get_dates(check_in, check_out)
 
     def test_occupancy(self):
-        self.base_homepage().get_occupancy()
+        # The occupancy value must be the range of 1~30
+        self.base_homepage().get_occupancy(4)
+
+    def test_search(self):
+        self.base_homepage().get_search()
