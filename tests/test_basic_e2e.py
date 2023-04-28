@@ -1,5 +1,6 @@
 import pytest
 from utils.base import BaseClass
+import datetime
 
 
 class TestSuite(BaseClass):
@@ -14,7 +15,9 @@ class TestSuite(BaseClass):
         self.base_homepage().get_destination("New York")
 
     def test_dates(self):
-        self.base_homepage().get_dates()
+        check_in = datetime.date.today() + datetime.timedelta(days=1)
+        check_out = datetime.date.today() + datetime.timedelta(days=3)
+        self.base_homepage().get_dates(check_in, check_out)
 
     def test_occupancy(self):
         self.base_homepage().get_occupancy()
