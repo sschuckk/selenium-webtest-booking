@@ -1,5 +1,6 @@
 import pytest
 from pages.home import HomePage
+from pages.results import ResultsPage
 
 
 @pytest.mark.usefixtures("setup")
@@ -9,4 +10,5 @@ class BaseClass:
         return HomePage(self.driver)
 
     def base_results(self):
-        pass
+        return ResultsPage(self.driver)
+
