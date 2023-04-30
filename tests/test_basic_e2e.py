@@ -28,3 +28,6 @@ class TestSuite(BaseClass):
 
     def test_filter_rating(self):
         self.base_results().filter_by_rating(stars=["3", "4", "5"])
+
+    def test_filter_distance(self):
+        self.base_results().filter_by_distance(distance="5000")

@@ -11,8 +11,8 @@ class ResultsPage(object):
         for star in stars:
             self.driver.find_element(By.XPATH, f"(//div[@data-filters-item='class:class={star}'])[1]").click()
 
-    def filter_by_distance(self):
-        pass
-
+    def filter_by_distance(self, distance):
+        self.driver.find_element(By.XPATH, f"(//div[@data-filters-item='distance:distance={distance}'])[1]").click()
+        sleep(10)
     def sort_by_price(self):
         pass
