@@ -31,3 +31,6 @@ class TestSuite(BaseClass):
 
     def test_filter_distance(self):
         self.base_results().filter_by_distance(distance="5000")
+
+    def test_sort_by(self):
+        self.base_results().sort_by_price()
