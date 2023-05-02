@@ -34,3 +34,6 @@ class TestSuite(BaseClass):
 
     def test_sort_by(self):
         self.base_results().sort_by_price()
+
+    def test_result_list(self):
+        self.base_results().get_result_list()

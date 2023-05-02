@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.common.exceptions import NoSuchElementException
 
 
 class HomePage(object):
 
-    def __init__(self, driver):
+    def __init__(self, driver: WebDriver):
         self.driver = driver
 
     def get_language(self):
