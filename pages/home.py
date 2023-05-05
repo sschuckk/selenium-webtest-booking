@@ -22,8 +22,8 @@ class HomePage(object):
         self.driver.find_element(By.XPATH, destination).click()
 
     def get_dates(self, check_in, check_out):
-        check_in = "span[data-date='" + str(check_in) + "']"
-        check_out = "span[data-date='" + str(check_out) + "']"
+        check_in = f"span[data-date='{check_in}']"
+        check_out = f"span[data-date='{check_out}']"
 
         # Verify if the element already exist and click to open/show if not
         try:
