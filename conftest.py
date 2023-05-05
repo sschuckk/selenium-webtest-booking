@@ -21,7 +21,8 @@ def setup(request):
     try:
         wait = WebDriverWait(driver, 5)
         wait.until(expected_conditions.presence_of_element_located((By.XPATH, "//div[@role='dialog']")))
-        driver.find_element(By.XPATH, "//button[@aria-label='Ignorar informações de login.']").click()
+        driver.find_element(By.CLASS_NAME,
+                            "fc63351294.a822bdf511.e3c025e003.fa565176a8.f7db01295e.c334e6f658.ae1678b153").click()
     except WebDriverWait:
         print("Pop-up not detected")
 
