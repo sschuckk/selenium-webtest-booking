@@ -43,3 +43,5 @@ class ResultsPage(object):
 
         for i in hotel_lst:
             print(i)
+
+        return hotel_lst

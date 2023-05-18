@@ -30,10 +30,11 @@ class TestSuite(BaseClass):
         self.base_results().filter_by_rating(stars=["3", "4", "5"])
 
     def test_filter_distance(self):
-        self.base_results().filter_by_distance(distance="5000")
+        self.base_results().filter_by_distance(distance="3220")
 
     def test_sort_by(self):
         self.base_results().sort_by_price()
 
     def test_result_list(self):
-        self.base_results().get_result_list()
+        hotel_lst = self.base_results().get_result_list()
+        self.html_pandas(hotel_lst)
