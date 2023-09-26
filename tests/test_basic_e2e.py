@@ -1,4 +1,3 @@
-import pytest
 import datetime
 from utils.base import BaseClass
 
@@ -10,7 +9,8 @@ class TestSuite(BaseClass):
         self.base_homepage().get_us_language().click()
 
     def test_currency(self):
-        self.base_homepage().get_currency()
+        self.base_homepage().get_select_currency().click()
+        self.base_homepage().get_us_currency().click()
 
     def test_destination(self):
         self.base_homepage().get_destination(destination="New York")

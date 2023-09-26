@@ -14,9 +14,11 @@ class HomePage(object):
     def get_us_language(self):
         return self.driver.find_element(By.XPATH, "//span[normalize-space()='English (US)']")
 
-    def get_currency(self):
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='header-currency-picker-trigger']").click()
-        self.driver.find_element(By.XPATH, "//div[normalize-space()='USD']").click()
+    def get_select_currency(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='header-currency-picker-trigger']")
+
+    def get_us_currency(self):
+        return self.driver.find_element(By.XPATH, "//div[normalize-space()='USD']")
 
     def get_destination(self, destination):
         self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='Where are you going?']").send_keys(destination)
