@@ -24,9 +24,16 @@ class TestSuite(BaseClass):
         self.base_homepage().get_date_picker(check_in).click()
         self.base_homepage().get_date_picker(check_out).click()
 
+    # def test_occupancy(self):
+    #     # The occupancy value must be the range of 1~30
+    #     self.base_homepage().get_occupancy(adults=4)
+
     def test_occupancy(self):
-        # The occupancy value must be the range of 1~30
-        self.base_homepage().get_occupancy(adults=4)
+        self.base_homepage().get_occupancy_box().click()
+        self.base_homepage().get_increase_occupancy_adult().click()
+        self.base_homepage().get_increase_occupancy_adult().click()
+        self.base_homepage().get_decrease_occupancy_adult().click()
+        self.base_homepage().get_button_done().click()
 
     def test_search(self):
         self.base_homepage().get_search()

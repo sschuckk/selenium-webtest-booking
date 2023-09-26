@@ -38,20 +38,20 @@ class HomePage(object):
         pick_date = f"span[data-date='{date}']"
         return self.driver.find_element(By.CSS_SELECTOR, pick_date)
 
-    def get_occupancy(self, adults):
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='occupancy-config']").click()
-        increase_adult = self.driver.find_element(By.XPATH, "(//button[@type='button'])[8]")
-        decrease_adult = self.driver.find_element(By.XPATH, "(//button[@type='button'])[7]")
-        while True:
-            current_adults = int(self.driver.find_element(By.ID, "group_adults").get_attribute('value'))
-            if adults > current_adults:
-                increase_adult.click()
-            elif adults < current_adults:
-                decrease_adult.click()
-            else:
-                break
+    def get_occupancy_box(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='occupancy-config']")
 
-        self.driver.find_element(By.XPATH, "//span[normalize-space()='Done']").click()
+    def get_increase_occupancy_adult(self):
+        return self.driver.find_element(By.XPATH, "(//button[@type='button'])[8]")
+
+    def get_decrease_occupancy_adult(self):
+        return self.driver.find_element(By.XPATH, "(//button[@type='button'])[7]")
+
+    def get_number_adults(self):
+        return int(self.driver.find_element(By.ID, "group_adults").get_attribute('value'))
+
+    def get_button_done(self):
+        return self.driver.find_element(By.XPATH, "//span[normalize-space()='Done']")
 
     def get_search(self):
         self.driver.find_element(By.CSS_SELECTOR, "button[type='submit'] span").click()
