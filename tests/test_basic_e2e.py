@@ -13,7 +13,9 @@ class TestSuite(BaseClass):
         self.base_homepage().get_us_currency().click()
 
     def test_destination(self):
-        self.base_homepage().get_destination(destination="New York")
+        destination = "New York"
+        self.base_homepage().get_destination().send_keys(destination)
+        self.base_homepage().get_city_destination(destination).click()
 
     def test_dates(self):
         check_in = datetime.date.today() + datetime.timedelta(days=1)

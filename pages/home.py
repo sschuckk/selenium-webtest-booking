@@ -20,10 +20,12 @@ class HomePage(object):
     def get_us_currency(self):
         return self.driver.find_element(By.XPATH, "//div[normalize-space()='USD']")
 
-    def get_destination(self, destination):
-        self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='Where are you going?']").send_keys(destination)
+    def get_destination(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='Where are you going?']")
+
+    def get_city_destination(self, destination):
         destination = "//div[normalize-space()='" + destination + "']"
-        self.driver.find_element(By.XPATH, destination).click()
+        return self.driver.find_element(By.XPATH, destination)
 
     def get_dates(self, check_in, check_out):
         check_in = f"span[data-date='{check_in}']"
