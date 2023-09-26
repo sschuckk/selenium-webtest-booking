@@ -8,9 +8,11 @@ class HomePage(object):
     def __init__(self, driver: WebDriver):
         self.driver = driver
 
-    def get_language(self):
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='header-language-picker-trigger']").click()
-        self.driver.find_element(By.XPATH, "//span[normalize-space()='English (US)']").click()
+    def get_select_language(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='header-language-picker-trigger']")
+
+    def get_us_language(self):
+        return self.driver.find_element(By.XPATH, "//span[normalize-space()='English (US)']")
 
     def get_currency(self):
         self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='header-currency-picker-trigger']").click()

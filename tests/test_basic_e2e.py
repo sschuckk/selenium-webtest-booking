@@ -6,7 +6,8 @@ from utils.base import BaseClass
 class TestSuite(BaseClass):
 
     def test_language(self):
-        self.base_homepage().get_language()
+        self.base_homepage().get_select_language().click()
+        self.base_homepage().get_us_language().click()
 
     def test_currency(self):
         self.base_homepage().get_currency()
