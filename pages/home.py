@@ -27,19 +27,16 @@ class HomePage(object):
         destination = "//div[normalize-space()='" + destination + "']"
         return self.driver.find_element(By.XPATH, destination)
 
-    def get_dates(self, check_in, check_out):
-        check_in = f"span[data-date='{check_in}']"
-        check_out = f"span[data-date='{check_out}']"
-
-        # Verify if the element already exist and click to open/show if not
+    def get_date_box(self):
         try:
             self.driver.find_element(By.CSS_SELECTOR, "div[data-testid='searchbox-datepicker']")
         except NoSuchElementException:
             print("Warning: Element not found by default!")
-            self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='date-display-field-start']").click()
+            return self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='date-display-field-start']")
 
-        self.driver.find_element(By.CSS_SELECTOR, check_in).click()
-        self.driver.find_element(By.CSS_SELECTOR, check_out).click()
+    def get_date_picker(self, date):
+        pick_date = f"span[data-date='{date}']"
+        return self.driver.find_element(By.CSS_SELECTOR, pick_date)
 
     def get_occupancy(self, adults):
         self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='occupancy-config']").click()

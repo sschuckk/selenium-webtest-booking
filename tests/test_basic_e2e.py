@@ -20,7 +20,9 @@ class TestSuite(BaseClass):
     def test_dates(self):
         check_in = datetime.date.today() + datetime.timedelta(days=1)
         check_out = datetime.date.today() + datetime.timedelta(days=3)
-        self.base_homepage().get_dates(check_in, check_out)
+        self.base_homepage().get_date_box().click()
+        self.base_homepage().get_date_picker(check_in).click()
+        self.base_homepage().get_date_picker(check_out).click()
 
     def test_occupancy(self):
         # The occupancy value must be the range of 1~30
