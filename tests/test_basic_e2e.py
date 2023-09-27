@@ -1,6 +1,9 @@
 import datetime
-from utils.base import BaseClass
 
+import pytest
+
+from utils.base import BaseClass
+import time
 
 class TestSuite(BaseClass):
 
@@ -18,28 +21,26 @@ class TestSuite(BaseClass):
         self.base_homepage().get_city_destination(destination).click()
 
     def test_dates(self):
+        time.sleep(2)
         check_in = datetime.date.today() + datetime.timedelta(days=1)
         check_out = datetime.date.today() + datetime.timedelta(days=3)
         self.base_homepage().get_date_box().click()
         self.base_homepage().get_date_picker(check_in).click()
         self.base_homepage().get_date_picker(check_out).click()
 
-    # def test_occupancy(self):
-    #     # The occupancy value must be the range of 1~30
-    #     self.base_homepage().get_occupancy(adults=4)
-
     def test_occupancy(self):
         self.base_homepage().get_occupancy_box().click()
         self.base_homepage().get_increase_occupancy_adult().click()
         self.base_homepage().get_increase_occupancy_adult().click()
         self.base_homepage().get_decrease_occupancy_adult().click()
-        self.base_homepage().get_button_done().click()
+        self.base_homepage().get_occupancy_button_done().click()
 
     def test_search(self):
-        self.base_homepage().get_search()
+        self.base_homepage().get_button_search().click()
 
-    def test_filter_rating(self):
-        self.base_results().filter_by_rating(stars=["3", "4", "5"])
+    @pytest.mark.parametrize("star", ["3", "4", "5"])
+    def test_filter_rating(self, star):
+        self.base_results().filter_by_rating(star).click()
 
     def test_filter_distance(self):
         self.base_results().filter_by_distance(distance="3220")
