@@ -4,7 +4,12 @@ from utils.base import BaseClass
 
 
 class TestSuite(BaseClass):
+    """A E2E Test Suite for testing various functionalities of www.booking.com website.
 
+        This test suite use the end user’s perspective, simulating a real user scenario that cover different aspects of
+        the hotel booking application, such as language selection, currency selection, searching for a city destination,
+        date selection, occupancy management, search options, and applying filters to show a personalized resul.
+    """
     def test_language(self):
         """Test language selection choosing US as option."""
         self.base_homepage().get_select_language().click()
