@@ -31,9 +31,11 @@ class ResultsPage(object):
         return self.driver.find_element(By.XPATH, f"(//div[@data-filters-item='distance:distance={distance}'])[1]")
 
     def sort_dropdown_trigger(self):
+        """Locate and return the element for the 'Sort Dropdown Trigger' button."""
         self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='sorters-dropdown-trigger']")
 
     def sort_by_price(self):
+        """Locate and return the element for the 'Sort by Price' option."""
         self.driver.find_element(By.CSS_SELECTOR, "button[data-id='price']")
 
     def get_result_list(self):
