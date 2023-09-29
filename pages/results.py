@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.common import NoSuchElementException
 from selenium.webdriver.remote.webdriver import WebDriver
-from time import sleep
 
 
 class ResultsPage(object):
@@ -10,11 +9,10 @@ class ResultsPage(object):
         self.driver = driver
 
     def filter_by_rating(self, star):
-        """
-        Find and returns the first search result element matching the specified star rating for Property Rating.
+        """Find and returns the first search result element matching the specified star rating for Property Rating.
 
         Args:
-            star (int): The star rating (1 to 5) to filter the results.
+            star (str): The star rating (1 to 5) to filter the results.
 
         Returns:
              WebElement: The first search result element matching the specified star rating.
@@ -22,15 +20,23 @@ class ResultsPage(object):
         return self.driver.find_element(By.XPATH, f"(//div[@data-filters-item='class:class={star}'])[1]")
 
     def filter_by_distance(self, distance):
-        self.driver.find_element(By.XPATH, f"(//div[@data-filters-item='distance:distance={distance}'])[1]").click()
+        """Find and returns the element matching the specified distance.
+
+        Args:
+            distance (str): The distance (1610) for less than 1 mile and (3220) less than 2 miles
+
+        Returns:
+             WebElement: The search result element matching the specified distance
+        """
+        return self.driver.find_element(By.XPATH, f"(//div[@data-filters-item='distance:distance={distance}'])[1]")
+
+    def sort_dropdown_trigger(self):
+        self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='sorters-dropdown-trigger']")
 
     def sort_by_price(self):
-        sleep(5)
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='sorters-dropdown-trigger']").click()
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-id='price']").click()
+        self.driver.find_element(By.CSS_SELECTOR, "button[data-id='price']")
 
     def get_result_list(self):
-        sleep(3)
         hotel_lst = []
         result_list = self.driver.find_elements(By.CSS_SELECTOR, "div[data-testid='property-card']")
 
