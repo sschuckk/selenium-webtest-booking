@@ -32,11 +32,11 @@ class ResultsPage(object):
 
     def sort_dropdown_trigger(self):
         """Locate and return the element for the 'Sort Dropdown Trigger' button."""
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='sorters-dropdown-trigger']")
+        return self.driver.find_element(By.CSS_SELECTOR, "button[data-testid='sorters-dropdown-trigger']")
 
     def sort_by_price(self):
         """Locate and return the element for the 'Sort by Price' option."""
-        self.driver.find_element(By.CSS_SELECTOR, "button[data-id='price']")
+        return self.driver.find_element(By.CSS_SELECTOR, "button[data-id='price']")
 
     def get_result_list(self):
         hotel_lst = []
