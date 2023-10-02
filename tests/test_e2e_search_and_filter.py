@@ -1,14 +1,14 @@
 import pytest
 import datetime
 from utils.base import BaseClass
-
+from time import sleep
 
 class TestSuite(BaseClass):
-    """A E2E Test Suite for testing various functionalities of www.booking.com website.
+    """An E2E Test Suite for testing various functionalities of the www.booking.com website.
 
-        This test suite use the end user’s perspective, simulating a real user scenario that cover different aspects of
-        the hotel booking application, such as language selection, currency selection, searching for a city destination,
-        date selection, occupancy management, search options, and applying filters to show a personalized resul.
+    This test suite adopts an end-user perspective, simulating real-user scenarios that cover different aspects of the
+    hotel booking application. These aspects include language selection, currency selection, city destination search,
+    date selection, occupancy management, search options, and the application of filters to show personalized results.
     """
     def test_language(self):
         """Test language selection choosing US as option."""
@@ -59,6 +59,11 @@ class TestSuite(BaseClass):
         """Test the sorting of hotel results by selecting 'sort by price' from a dropdown menu."""
         self.base_results().sort_dropdown_trigger().click()
         self.base_results().sort_by_price().click()
+
+    def test_city_destination_result(self):
+        """Verify if the city destination is the same after search action."""
+        destination = "New York"
+        assert self.base_homepage().get_destination_value() == destination
 
     def test_result_list(self):
         """Verify hotel list results"""

@@ -35,6 +35,11 @@ class HomePage(object):
         """Finds and returns the destination input field element."""
         return self.driver.find_element(By.CSS_SELECTOR, "input[placeholder='Where are you going?']")
 
+    def get_destination_value(self):
+        """Finds and returns the attribute value of destination input field."""
+        return self.driver.find_element(
+            By.CSS_SELECTOR, "input[placeholder='Where are you going?']").get_attribute('value')
+
     def get_city_destination(self, destination):
         """Find and return the web element corresponding to the given city destination.
 
@@ -95,7 +100,7 @@ class HomePage(object):
 
     def get_occupancy_button_done(self):
         """Find and return the 'Done' button element in the occupancy box configuration."""
-        return self.driver.find_element(By.XPATH, "//span[normalize-space()='Done']")
+        return self.driver.find_element(By.XPATH, "(//button[@type='button'])[13]")
 
     def get_button_search(self):
         """Find and return the search button element on the web page."""
