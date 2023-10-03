@@ -73,6 +73,11 @@ class TestSuite(BaseClass):
         assert self.base_homepage().get_date_picker(check_in).get_attribute('aria-checked') == "true"
         assert self.base_homepage().get_date_picker(check_out).get_attribute('aria-checked') == "true"
 
+    def test_adult_number_result(self):
+        """Verify if the number of adults is the same after search action."""
+        self.base_homepage().get_occupancy_box().click()
+        assert self.base_homepage().get_number_adults() == "3"
+
     def test_result_list(self):
         """Verify hotel list results"""
         hotel_lst = self.base_results().get_result_list()
